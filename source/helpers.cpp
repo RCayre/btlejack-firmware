@@ -188,5 +188,6 @@ uint32_t whiten_pattern(uint8_t *pattern,int size, int offset,int channel) {
 	}
 	whiten(payload,size+offset,channel);
 	uint32_t output = (payload[offset] | (payload[offset+1] << 8) | (payload[offset+2] << 16) | (payload[offset+3] << 24));
+	free(payload);
 	return output;
 }
