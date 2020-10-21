@@ -182,11 +182,12 @@ void whiten(uint8_t *data, int len, int channel)
 
 uint32_t whiten_pattern(uint8_t *pattern,int size, int offset,int channel) {
 	uint8_t *payload = (uint8_t*)malloc(sizeof(uint8_t)*(size+offset));
-	for (int i=0;i<size;i++) {
+	for (int i=0;i<size+offset;i++) {
 		if (i >= offset) payload[i] = pattern[i-offset];
 		else payload[i] = 0;
 	}
 	whiten(payload,size+offset,channel);
 	uint32_t output = (payload[offset] | (payload[offset+1] << 8) | (payload[offset+2] << 16) | (payload[offset+3] << 24));
+	free(payload);
 	return output;
 }

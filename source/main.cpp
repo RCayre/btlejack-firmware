@@ -2091,10 +2091,13 @@ void dispatchMessage(T_OPERATION op, uint8_t *payload, int nSize, uint8_t ubflag
 			if (g_sniffer.action == JAM_ADV_TX || g_sniffer.action == JAM_ADV_RX) {
 				/* Disable radio. */
 				radio_disable();
+				NRF_RADIO->SHORTS = 0;
+				radio_disable();
+				reset();
 				status[0] = 0x00;
 			}
 			/* Send ACK. */
-	                pLink->sendAdvertisementResponse(ADVERTISEMENTS_OPCODE_DISABLE_JAMMING,status,1);
+			pLink->sendAdvertisementResponse(ADVERTISEMENTS_OPCODE_DISABLE_JAMMING,status,1);
 		}
 		break;
 	  }

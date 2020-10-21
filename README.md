@@ -15,6 +15,18 @@ $ make all
 
 Firmware hex files are then available in the `dist` directory (not versioned). 
 
+# Flashing
+
+1. Plug the micro:bit into one of your USB ports and mount the micro:bit into some folder
+2. Copy the desired firmware (hex-file) into the mounted folder and wait until the microbit stops blinking
+3. execute `sync` and unmount the micro:bit
+4. After the device stops blinking the firmware should be running
+
+# Troubleshooting
+
+When we received the micro:bits we encountered an issue that they seemed to not be flashable first.
+We followed [those instructions](https://microbit.org/get-started/user-guide/firmware/) to fix that problem.
+
 
 ## Links
 
